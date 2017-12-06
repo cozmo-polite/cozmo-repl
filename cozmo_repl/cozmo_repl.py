@@ -1,7 +1,6 @@
-import sys
 import os
 from IPython.terminal.embed import InteractiveShellEmbed
-from cozmo_prompt import CozmoPrompt
+from cozmo_repl.cozmo_prompt import CozmoPrompt
 import cozmo
 import style as c
 
