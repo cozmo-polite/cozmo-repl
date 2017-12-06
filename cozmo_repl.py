@@ -1,6 +1,6 @@
 import sys
 from IPython.terminal.embed import InteractiveShellEmbed
-from IPython.terminal.prompts import Prompts, Token
+from cozmo_prompt import CozmoPrompt
 import cozmo
 import style as c
 
@@ -23,6 +23,7 @@ def cozmo_repl(robot: cozmo.robot.Robot):
     """Invoke the ipython shell while connected to cozmo"""
     default_log_level = cozmo.logger.level
     cozmo.logger.setLevel('WARN')
+    ipyshell.prompts = CozmoPrompt(ipyshell)
     ipyshell(usage)
     cozmo.logger.setLevel(default_log_level)
 
