@@ -2,20 +2,21 @@ import sys
 from IPython.terminal.embed import InteractiveShellEmbed
 from IPython.terminal.prompts import Prompts, Token
 import cozmo
+import style as c
 
-usage = """\
-This is an IPython interactive shell for Cozmo.
+usage = f"""\
+This is an {c.bold.cyan('IPython')} interactive shell for {c.bold.blue('Cozmo')}.
 All commands are executed within cozmo's running program loop.
 Use the [tab] key to auto-complete commands, and see all available methods.
 All IPython commands work as usual. See below for some useful syntax:
-  ?         -> Introduction and overview of IPython's features.
-  object?   -> Details about 'object'.
-  object??  -> More detailed, verbose information about 'object'.\
+  {c.bold.cyan('?')}         -> Introduction and overview of IPython's features.
+  {c.bold.cyan('object?')}   -> Details about 'object'.
+  {c.bold.cyan('object??')}  -> More detailed, verbose information about 'object'.\
   """
 
 # Creating IPython's history database on the main thread
-ipyshell = InteractiveShellEmbed(banner1="\nWelcome to the Cozmo Shell",
-                                 exit_msg="Goodbye\n")
+ipyshell = InteractiveShellEmbed(banner1=c.bold.blue("\nWelcome to the Cozmo Shell"),
+                                 exit_msg=c.bold.red("Goodbye")+"\n")
 
 
 def cozmo_repl(robot: cozmo.robot.Robot):
