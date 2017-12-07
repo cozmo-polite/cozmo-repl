@@ -2,6 +2,8 @@ Cozmo REPL
 ==========
 
 [![PyPI](https://img.shields.io/pypi/v/cozmo-repl.svg)](https://pypi.python.org/pypi/cozmo-repl)
+[![Build Status](https://travis-ci.org/cozmo-polite/cozmo-repl.svg?branch=master)](https://travis-ci.org/cozmo-polite/cozmo-repl)
+[![Codecov](https://img.shields.io/codecov/c/github/cozmo-polite/cozmo-repl.svg)](https://codecov.io/gh/cozmo-polite/cozmo-repl)
 
 > IPython REPL for the [Cozmo][cozmo] Robot
 
