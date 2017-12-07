@@ -3,6 +3,7 @@ from IPython.terminal.embed import InteractiveShellEmbed
 from cozmo_repl.cozmo_prompt import CozmoPrompt
 import cozmo
 import style as c
+import argparse
 
 banner = """\
    ______                               ____             __
@@ -39,6 +40,14 @@ def cozmo_repl(robot: cozmo.robot.Robot):
     ipyshell.prompts = CozmoPrompt(ipyshell)
     ipyshell(usage)
     cozmo.logger.setLevel(default_log_level)
+
+
+def get_repl_args():
+    parser = argparse.ArgumentParser(description="Cozmo Repl")
+    parser.add_argument("--viewer", help="Launch with viewer", action="store_true", required=False)
+    args = parser.parse_args()
+    return args
+
 
 def run_cozmo_repl(with_viewer=False):
     cozmo.run_program(cozmo_repl, use_3d_viewer=with_viewer, use_viewer=with_viewer)
