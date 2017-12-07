@@ -32,7 +32,6 @@ if "COZMO_LOG_LEVEL" not in os.environ:
     os.environ["COZMO_LOG_LEVEL"] = "ERROR"
 
 
-
 def cozmo_repl(robot: cozmo.robot.Robot):
     """Invoke the ipython shell while connected to cozmo"""
     default_log_level = cozmo.logger.level
@@ -41,5 +40,5 @@ def cozmo_repl(robot: cozmo.robot.Robot):
     ipyshell(usage)
     cozmo.logger.setLevel(default_log_level)
 
-if __name__ == '__main__':
-    cozmo.run_program(cozmo_repl, use_3d_viewer=True, use_viewer=True)
+def run_cozmo_repl(with_viewer=False):
+    cozmo.run_program(cozmo_repl, use_3d_viewer=with_viewer, use_viewer=with_viewer)
