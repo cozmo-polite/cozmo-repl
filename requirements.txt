@@ -1,3 +1,7 @@
 cozmo
 IPython
 style
+
+pytest
+pytest-cov
+codecov
