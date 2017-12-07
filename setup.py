@@ -9,5 +9,5 @@ setup(
     author_email='adriean.khisbe@live.fr',
     packages=['cozmo_repl'],
     scripts=["cozmo-repl"],
-    install_requires = ['cozmo', 'IPython', 'style']
+    install_requires=['cozmo', 'IPython', 'style', 'PyOpenGL', 'PyOpenGL-accelerate', 'Pillow']
 )
