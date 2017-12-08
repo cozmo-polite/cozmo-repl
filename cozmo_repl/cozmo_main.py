@@ -34,5 +34,6 @@ if "COZMO_LOG_LEVEL" not in os.environ:
 def get_repl_args():
     parser = argparse.ArgumentParser(description="Cozmo Repl")
     parser.add_argument("--viewer", help="Launch with viewer", action="store_true", required=False)
+    parser.add_argument("--verbose", help="VErbose mode", action="store_true", required=False)
     args = parser.parse_args()
     return args

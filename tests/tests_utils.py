@@ -13,6 +13,7 @@ class Expando(object):
 class FakeCozmo:
     def __init__(self, robot=None, loggerLevel="INFO", loggerSetLevel=noop):
         self.logger = Expando()
+        self.logger_protocol = Expando()
         self.robot = robot if robot else Expando()
         self.logger.level = loggerLevel
         self.logger.setLevel = loggerSetLevel
