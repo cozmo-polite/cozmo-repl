@@ -3,4 +3,4 @@ from cozmo_repl import REPL, get_repl_args
 
 args = get_repl_args()
 
-REPL.run(with_viewer=args.viewer, verbose=args.verbose)
+REPL.run(with_viewer=args.viewer, verbose=args.verbose, extra_paths=args.extra_paths)

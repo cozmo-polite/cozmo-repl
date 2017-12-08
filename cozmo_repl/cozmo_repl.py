@@ -11,7 +11,7 @@ class CozmoRepl:
 
         self.default_log_level = self.cozmo.logger.level
 
-    def run(self, with_viewer=False, verbose=False):
+    def run(self, with_viewer=False, verbose=False, extra_paths=None):
         def cozmo_repl(robot): # cozmo.robot.Robot
             """Invoke the ipython shell while connected to cozmo"""
             self.cozmo.logger_protocol.disabled = self.cozmo.logger.disabled = False
@@ -24,5 +24,8 @@ class CozmoRepl:
             self.cozmo.logger_protocol.disabled = self.cozmo.logger.disabled = True
 
         sys.path.append(".")
+        if extra_paths:
+            for extra_path in extra_paths.split(";"):
+                sys.path.append(extra_path)
 
         self.cozmo.run_program(cozmo_repl, use_3d_viewer=with_viewer, use_viewer=with_viewer)
