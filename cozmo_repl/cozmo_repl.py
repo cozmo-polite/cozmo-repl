@@ -1,6 +1,6 @@
 from IPython.terminal.embed import InteractiveShellEmbed
 from cozmo_repl.cozmo_prompt import CozmoPrompt
-
+import sys
 
 class CozmoRepl:
 
@@ -19,6 +19,10 @@ class CozmoRepl:
             self.ipyshell.prompts = CozmoPrompt(self.ipyshell)
             self.ipyshell(self.usage)
             self.cozmo.logger.setLevel(self.default_log_level)
+
         if not verbose:
             self.cozmo.logger_protocol.disabled = self.cozmo.logger.disabled = True
+
+        sys.path.append(".")
+
         self.cozmo.run_program(cozmo_repl, use_3d_viewer=with_viewer, use_viewer=with_viewer)
