@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="cozmo-repl",
-    version="0.2.0",
+    version="0.3.0",
     description="IPython REPL for Cozmo",
     license="Apache2",
     author="Adrien Becchis",
