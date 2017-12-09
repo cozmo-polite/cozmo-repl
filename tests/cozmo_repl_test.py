@@ -32,3 +32,15 @@ class ReplTestCase(unittest.TestCase):
         )
         repl = CozmoRepl(fake_cozmo, usage="this is an usage", ipyshell=ipyfake)
         repl.run(verbose=True)
+
+    def test_add_path_method_no_extra_path(self):
+        array = ["path"]
+        repl = CozmoRepl(FakeCozmo(), path=array)
+        repl.add_path(None)
+        self.assertEqual(repl.path, ["path", "."])
+
+    def test_add_path_method_with_extra_path(self):
+        array = ["path"]
+        repl = CozmoRepl(FakeCozmo(), path=array)
+        repl.add_path("path1;path2")
+        self.assertEqual(repl.path, ["path", ".", "path1", "path2"])

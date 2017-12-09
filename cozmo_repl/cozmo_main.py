@@ -2,6 +2,7 @@ from .cozmo_repl import CozmoRepl
 import cozmo
 import argparse
 import os
+import sys
 import style as c
 
 banner = """\
@@ -23,7 +24,7 @@ All IPython commands work as usual. See below for some useful syntax:
   {c.bold.cyan('object??')}  -> More detailed, verbose information about 'object'.\
   """
 
-REPL = CozmoRepl(cozmo, usage=usage,
+REPL = CozmoRepl(cozmo, path=sys.path, usage=usage,
                  banner=c.bold.blue(f"\n{banner}\nWelcome to the Cozmo Shell"),
                  exit_message=c.bold.red("Goodbye :)\nWe Hope you had a good time with Cozmo\n"))
 

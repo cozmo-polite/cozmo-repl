@@ -1,15 +1,21 @@
 from IPython.terminal.embed import InteractiveShellEmbed
 from cozmo_repl.cozmo_prompt import CozmoPrompt
-import sys
 
 class CozmoRepl:
 
-    def __init__(self, cozmo, usage="", banner=None, exit_message=None, ipyshell=None):
+    def __init__(self, cozmo, usage="", banner="", exit_message="",
+                 ipyshell=None, path=None):
         self.cozmo = cozmo
         self.usage = usage
         self.ipyshell = ipyshell if ipyshell else InteractiveShellEmbed(banner1=banner, exit_msg=exit_message)
-
+        self.path = path if path else []
         self.default_log_level = self.cozmo.logger.level
+
+    def add_path(self, extra_paths):
+        self.path.append(".")
+        if extra_paths:
+            for extra_path in extra_paths.split(";"):
+                self.path.append(extra_path)
 
     def run(self, with_viewer=False, verbose=False, extra_paths=None):
         def cozmo_repl(robot): # cozmo.robot.Robot
@@ -23,9 +29,6 @@ class CozmoRepl:
         if not verbose:
             self.cozmo.logger_protocol.disabled = self.cozmo.logger.disabled = True
 
-        sys.path.append(".")
-        if extra_paths:
-            for extra_path in extra_paths.split(";"):
-                sys.path.append(extra_path)
+        self.add_path(extra_paths)
 
         self.cozmo.run_program(cozmo_repl, use_3d_viewer=with_viewer, use_viewer=with_viewer)
