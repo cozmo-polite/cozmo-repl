@@ -32,10 +32,10 @@ if "COZMO_LOG_LEVEL" not in os.environ:
     os.environ["COZMO_LOG_LEVEL"] = "ERROR"
 
 
-def get_repl_args():
+def get_repl_args(commandline_args=None):
     parser = argparse.ArgumentParser(description="Cozmo Repl")
     parser.add_argument("--viewer", help="Launch with viewer", action="store_true", required=False)
     parser.add_argument("--verbose", help="Verbose mode", action="store_true", required=False)
-    parser.add_argument("--extra-paths", help="Directories to add to import path (; separated)", required=False)
-    args = parser.parse_args()
+    parser.add_argument("--extra-paths", help="Directories to add to import path (; separated)", metavar="p", required=False)
+    args = parser.parse_args(commandline_args)
     return args
